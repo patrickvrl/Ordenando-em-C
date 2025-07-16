@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "gera.h"
 
 void main(){
@@ -10,15 +11,17 @@ void main(){
     int op;
     scanf("%d", &op);
 
+    int* vetor = (int *) malloc(n * sizeof(int));
+    
     switch(op){
         case 1:
-            geraraleatorio(n);
+            geraraleatorio(n, vetor);
             break;
         case 2:
-            gerarcrescente(n);
+            gerarcrescente(n, vetor);
             break;
         case 3:
-            gerardecrescente(n);
+            gerardecrescente(n, vetor);
             break;
         default:
             printf("Opção inválida.");

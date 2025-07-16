@@ -1,24 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "gera.h"
 
 
-void geraraleatorio(int n){
+
+
+void geraraleatorio(int n, int* vetor){
     srand(time(NULL));
     printf("%d numeros em ordem aleatoria:\n", n);
     for(int i = 0; i < n; i++){
-    printf("%d\n", rand() % 100);}
-}
-void gerarcrescente(int n){
-    printf("%d numeros em ordem crescente:\n", n);
-    for(int i = 1; i < n + 1; i++){
-        printf("%d\n", i);
+        vetor[i] = rand() % 100;
+        printf("%d\n", vetor[i]);
     }
 }
-void gerardecrescente(int n){        
+void gerarcrescente(int n, int* vetor){
+    printf("%d numeros em ordem crescente:\n", n);
+    for(int i = 0; i < n; i++){
+        vetor[i] = i;
+        printf("%d\n", vetor[i]);
+    }
+}
+void gerardecrescente(int n, int* vetor){
     printf("%d numeros em ordem descrescente:\n", n);
     
     for(int i = n; i > 0; i--){
-        printf("%d\n", i);
+        vetor[i] = i;
+        printf("%d\n", vetor[i]);
         }
     }
