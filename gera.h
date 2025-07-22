@@ -1,3 +1,3 @@
-void geraraleatorio(int n, int* vetor);
-void gerarcrescente(int n, int* vetor);
-void gerardecrescente(int n, int* vetor);
+int* geraraleatorio(int n, int* vetor);
+int* gerarcrescente(int n, int* vetor);
+int* gerardecrescente(int n, int* vetor);

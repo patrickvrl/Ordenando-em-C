@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "gera.h"
+#include "algoritmos.h"
 
 void main(){
 
@@ -16,6 +17,7 @@ void main(){
     switch(op){
         case 1:
             geraraleatorio(n, vetor);
+            bubblesort(n, vetor);
             break;
         case 2:
             gerarcrescente(n, vetor);
