@@ -11,7 +11,7 @@ int* geraraleatorio(int n, int* vetor){
     printf("%d numeros em ordem aleatoria:\n", n);
     for(int i = 0; i < n; i++){
         vetor[i] = rand() % 100;
-        printf("%d\n", vetor[i]);
+        //printf("%d\n", vetor[i]);
     }
     return vetor;
 }

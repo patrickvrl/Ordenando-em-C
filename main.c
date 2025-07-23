@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <time.h>
 #include "gera.h"
 #include "algoritmos.h"
 
@@ -14,10 +16,21 @@ void main(){
 
     int* vetor = (int *) malloc(n * sizeof(int));
     
+    int* vetorcopia = (int *) malloc(n * sizeof(int));
+
     switch(op){
         case 1:
             geraraleatorio(n, vetor);
-            bubblesort(n, vetor);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            bubblesort(n, vetorcopia);
+
+            free(vetorcopia);
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+
+            bubblesortstop(n, vetorcopia);
+            free(vetorcopia);
+
             break;
         case 2:
             gerarcrescente(n, vetor);
