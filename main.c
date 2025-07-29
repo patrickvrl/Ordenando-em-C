@@ -22,14 +22,19 @@ void main(){
         case 1:
             geraraleatorio(n, vetor);
 
-            memcpy(vetorcopia, vetor, n * sizeof(int));
-            bubblesort(n, vetorcopia);
+            // memcpy(vetorcopia, vetor, n * sizeof(int));
+            // bubblesort(n, vetorcopia);
 
-            free(vetorcopia);
-            memcpy(vetorcopia, vetor, n * sizeof(int));
+            // free(vetorcopia);
+            // memcpy(vetorcopia, vetor, n * sizeof(int));
 
-            bubblesortstop(n, vetorcopia);
-            free(vetorcopia);
+            // bubblesortstop(n, vetorcopia);
+            // free(vetorcopia);
+
+            // memcpy(vetorcopia, vetor, n * sizeof(int));
+            // insertionsort(n, vetor);
+            binarysort(n, vetor);
+            // free(vetorcopia);
 
             break;
         case 2:
