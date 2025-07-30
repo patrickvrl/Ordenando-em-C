@@ -33,7 +33,7 @@ void main(){
 
             // memcpy(vetorcopia, vetor, n * sizeof(int));
             // insertionsort(n, vetor);
-            binarysort(n, vetor);
+            selectionsort(n, vetor);
             // free(vetorcopia);
 
             break;
