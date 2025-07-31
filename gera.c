@@ -8,7 +8,7 @@
 
 int* geraraleatorio(int n, int* vetor){
     srand(time(NULL));
-    printf("%d numeros em ordem aleatoria:\n", n);
+    //printf("%d numeros em ordem aleatoria:\n", n);
     for(int i = 0; i < n; i++){
         vetor[i] = rand() % 100000;
         //printf("%d\n", vetor[i]);

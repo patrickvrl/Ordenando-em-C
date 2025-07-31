@@ -21,29 +21,86 @@ void main(){
     switch(op){
         case 1:
             geraraleatorio(n, vetor);
+            /*
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            bubblesort(n, vetorcopia);
 
-            // memcpy(vetorcopia, vetor, n * sizeof(int));
-            // bubblesort(n, vetorcopia);
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            bubblesortstop(n, vetorcopia);
 
-            // free(vetorcopia);
-            // memcpy(vetorcopia, vetor, n * sizeof(int));
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            insertionsort(n, vetorcopia);
 
-            // bubblesortstop(n, vetorcopia);
-            // free(vetorcopia);
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            binarysort(n, vetorcopia);            
 
-            // memcpy(vetorcopia, vetor, n * sizeof(int));
-            // insertionsort(n, vetor);
-            selectionsort(n, vetor);
-            // free(vetorcopia);
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            shellsort(n, vetorcopia);
+            free(vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            selectionsort(n, vetorcopia);
+          */  
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            quicksortcentro(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            quicksortfim(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            quicksortmediana(n, vetorcopia);
+
 
             break;
-        case 2:
+
+            case 2:
             gerarcrescente(n, vetor);
+            /*
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            bubblesort(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            bubblesortstop(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            insertionsort(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            binarysort(n, vetorcopia);            
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            shellsort(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            selectionsort(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            quicksortcentro(n, vetorcopia);            
+            */
             break;
-        case 3:
+            case 3:
             gerardecrescente(n, vetor);
+            /*
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            bubblesort(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            bubblesortstop(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            insertionsort(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            binarysort(n, vetorcopia);            
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            shellsort(n, vetorcopia);
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            selectionsort(n, vetorcopia);
+            */
             break;
-        default:
+            default:
             printf("Opção inválida.");
             break;
     }

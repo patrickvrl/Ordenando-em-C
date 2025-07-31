@@ -215,3 +215,142 @@ void insertionsort(int n, int* vetor){
     printf("Numero de trocas: %.0f\n", troca);
     printf("Tempo de execucao: %3.5f segundos.\n", ((double) (fim - inicio)) / CLOCKS_PER_SEC);
 }
+
+void quicksort_rec_centro(int* vetor, int esquerda, int direita, double* compara, double* troca){
+    if (esquerda < direita){
+        int pivo = vetor[(esquerda + direita) / 2];
+        int i = esquerda;
+        int j = direita;
+
+        while (i <= j){
+            while (vetor[i] < pivo){
+                i++;
+                (*compara)++;
+            }
+            while (vetor[j] > pivo){
+                j--;
+                (*compara)++;
+            }
+            if (i <= j){
+                int aux = vetor[i];
+                vetor[i] = vetor[j];
+                vetor[j] = aux;
+                (*troca)++;
+                i++;
+                j--;
+            }
+        }
+
+        quicksort_rec_centro(vetor, esquerda, j, compara, troca);
+        quicksort_rec_centro(vetor, i, direita, compara, troca);
+    }
+}
+
+void quicksortcentro(int n, int* vetor){
+    double compara = 0;
+    double troca = 0;
+    printf("Dados ordenados com Quick Sort (pivo central):\n");
+    inicio = clock();
+
+    quicksort_rec_centro(vetor, 0, n - 1, &compara, &troca);
+
+    fim = clock();
+    // for(int i = 0; i < n; i++) printf("%d\n", vetor[i]);
+
+    printf("Numero de comparacoes: %.0f\n", compara);
+    printf("Numero de trocas: %.0f\n", troca);
+    printf("Tempo de execucao: %3.5f segundos.\n", ((double)(fim - inicio)) / CLOCKS_PER_SEC);
+}
+
+void quicksort_rec_fim(int* vetor, int esquerda, int direita, double* compara, double* troca){
+    if (esquerda < direita){
+        int pivo = vetor[direita];
+        int i = esquerda;
+        int j = direita;
+
+        while (i <= j){
+            while (vetor[i] < pivo){
+                i++;
+                (*compara)++;
+            }
+            while (vetor[j] > pivo){
+                j--;
+                (*compara)++;
+            }
+            if (i <= j){
+                int aux = vetor[i];
+                vetor[i] = vetor[j];
+                vetor[j] = aux;
+                (*troca)++;
+                i++;
+                j--;
+            }
+        }
+
+        quicksort_rec_fim(vetor, esquerda, j, compara, troca);
+        quicksort_rec_fim(vetor, i, direita, compara, troca);
+    }
+}
+
+void quicksortfim(int n, int* vetor){
+    double compara = 0;
+    double troca = 0;
+    printf("Dados ordenados com Quick Sort (pivo fim):\n");
+    inicio = clock();
+
+    quicksort_rec_fim(vetor, 0, n - 1, &compara, &troca);
+
+    fim = clock();
+    // for(int i = 0; i < n; i++) printf("%d\n", vetor[i]);
+
+    printf("Numero de comparacoes: %.0f\n", compara);
+    printf("Numero de trocas: %.0f\n", troca);
+    printf("Tempo de execucao: %3.5f segundos.\n", ((double)(fim - inicio)) / CLOCKS_PER_SEC);
+}
+
+void quicksort_rec_mediana(int* vetor, int esquerda, int direita, double* compara, double* troca){
+    if (esquerda < direita){
+        int meio = (esquerda + direita) / 2;
+        int pivo = (vetor[esquerda] + vetor[meio] + vetor[direita]) / 3;
+        int i = esquerda;
+        int j = direita;
+
+        while (i <= j){
+            while (vetor[i] < pivo){
+                i++;
+                (*compara)++;
+            }
+            while (vetor[j] > pivo){
+                j--;
+                (*compara)++;
+            }
+            if (i <= j){
+                int aux = vetor[i];
+                vetor[i] = vetor[j];
+                vetor[j] = aux;
+                (*troca)++;
+                i++;
+                j--;
+            }
+        }
+
+        quicksort_rec_mediana(vetor, esquerda, j, compara, troca);
+        quicksort_rec_mediana(vetor, i, direita, compara, troca);
+    }
+}
+
+void quicksortmediana(int n, int* vetor){
+    double compara = 0;
+    double troca = 0;
+    printf("Dados ordenados com Quick Sort (pivo mediana):\n");
+    inicio = clock();
+
+    quicksort_rec_mediana(vetor, 0, n - 1, &compara, &troca);
+
+    fim = clock();
+    // for(int i = 0; i < n; i++) printf("%d\n", vetor[i]);
+
+    printf("Numero de comparacoes: %.0f\n", compara);
+    printf("Numero de trocas: %.0f\n", troca);
+    printf("Tempo de execucao: %3.5f segundos.\n", ((double)(fim - inicio)) / CLOCKS_PER_SEC);
+}
