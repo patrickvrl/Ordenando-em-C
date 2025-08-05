@@ -6,7 +6,6 @@
 #include "algoritmos.h"
 
 void main(){
-
     printf("Digite a quantidade de numeros a serem gerados:\n");
     int n;
     scanf("%d", &n);
@@ -21,10 +20,10 @@ void main(){
     switch(op){
         case 1:
             geraraleatorio(n, vetor);
-            /*
+            
             memcpy(vetorcopia, vetor, n * sizeof(int));
             bubblesort(n, vetorcopia);
-
+            /*  
             memcpy(vetorcopia, vetor, n * sizeof(int));
             bubblesortstop(n, vetorcopia);
 
@@ -40,7 +39,7 @@ void main(){
 
             memcpy(vetorcopia, vetor, n * sizeof(int));
             selectionsort(n, vetorcopia);
-          */  
+            
             memcpy(vetorcopia, vetor, n * sizeof(int));
             quicksortcentro(n, vetorcopia);
 
@@ -50,6 +49,12 @@ void main(){
             memcpy(vetorcopia, vetor, n * sizeof(int));
             quicksortmediana(n, vetorcopia);
 
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            quicksortmediana(n, vetorcopia);
+            */
+
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            mergesort(vetorcopia, n);
 
             break;
 

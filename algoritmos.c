@@ -344,13 +344,99 @@ void quicksortmediana(int n, int* vetor){
     double troca = 0;
     printf("Dados ordenados com Quick Sort (pivo mediana):\n");
     inicio = clock();
-
+    
     quicksort_rec_mediana(vetor, 0, n - 1, &compara, &troca);
-
+    
     fim = clock();
     // for(int i = 0; i < n; i++) printf("%d\n", vetor[i]);
-
+    
     printf("Numero de comparacoes: %.0f\n", compara);
     printf("Numero de trocas: %.0f\n", troca);
     printf("Tempo de execucao: %3.5f segundos.\n", ((double)(fim - inicio)) / CLOCKS_PER_SEC);
+}
+
+void merge(int* vetor, int esquerda, int meio, int direita, double* compara, double* troca) {
+    int i, j, k;
+    int n1 = meio - esquerda + 1;
+    int n2 = direita - meio;
+    
+    int* left = (int*)malloc(n1 * sizeof(int));
+    int* right = (int*)malloc(n2 * sizeof(int));
+    
+    for (i = 0; i < n1; i++){
+        left[i] = vetor[esquerda + i];
+        (*troca)++;
+    }
+
+    for (j = 0; j < n2; j++){
+        right[j] = vetor[meio + 1 + j];
+        (*troca)++;
+    }
+    
+    
+    
+    i = 0;
+    j = 0;
+    k = esquerda;
+    while (i < n1 && j < n2) {
+        (*compara)++;
+        if (left[i] <= right[j]) {
+            vetor[k] = left[i];
+            i++;
+        } else {
+            vetor[k] = right[j];
+            j++;
+        }
+        k++;
+        (*troca)++;
+    }
+    
+    while (i < n1) {
+        vetor[k] = left[i];
+        i++;
+        k++;
+        (*troca)++;
+    }
+    
+    while (j < n2) {
+        vetor[k] = right[j];
+        j++;
+        k++;
+        (*troca)++;
+    }
+    
+    free(left);
+    free(right);
+}
+
+void mergesort_rec(int* vetor, int esquerda, int direita, double* compara, double* troca) {
+    printf("Dados ordenados com Merge Sort:\n");
+    inicio = clock();
+    
+    if (esquerda < direita) {
+        int meio = esquerda + (direita - esquerda) / 2;
+        
+        mergesort(vetor, esquerda, meio, compara, troca);
+        mergesort(vetor, meio + 1, direita, compara, troca);
+        
+        merge(vetor, esquerda, meio, direita, compara, troca);
+    }
+
+    fim = clock();
+
+    for(int i = 0; i < direita + 1; i++){
+        printf("%d\n", vetor[i]);
+    }
+
+    printf("Tempo de execucao: %3.5f segundos.\n", ((double)(fim - inicio)) / CLOCKS_PER_SEC);
+}
+
+void mergeSort(int* vetor, int n) {
+    double compara = 0;
+    double troca = 0;
+
+    mergeSort_rec(vetor, 0, n - 1, &compara, &troca);
+
+    printf("Total de comparações: %f\n", compara);
+    printf("Total de trocas: %f\n", troca);
 }
