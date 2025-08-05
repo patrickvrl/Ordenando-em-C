@@ -21,9 +21,9 @@ void main(){
         case 1:
             geraraleatorio(n, vetor);
             
+            /*  
             memcpy(vetorcopia, vetor, n * sizeof(int));
             bubblesort(n, vetorcopia);
-            /*  
             memcpy(vetorcopia, vetor, n * sizeof(int));
             bubblesortstop(n, vetorcopia);
 

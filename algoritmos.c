@@ -410,33 +410,30 @@ void merge(int* vetor, int esquerda, int meio, int direita, double* compara, dou
 }
 
 void mergesort_rec(int* vetor, int esquerda, int direita, double* compara, double* troca) {
-    printf("Dados ordenados com Merge Sort:\n");
-    inicio = clock();
-    
+
     if (esquerda < direita) {
         int meio = esquerda + (direita - esquerda) / 2;
         
-        mergesort(vetor, esquerda, meio, compara, troca);
-        mergesort(vetor, meio + 1, direita, compara, troca);
+        mergesort_rec(vetor, esquerda, meio, compara, troca);
+        mergesort_rec(vetor, meio + 1, direita, compara, troca);
         
         merge(vetor, esquerda, meio, direita, compara, troca);
     }
 
-    fim = clock();
-
-    for(int i = 0; i < direita + 1; i++){
-        printf("%d\n", vetor[i]);
-    }
-
-    printf("Tempo de execucao: %3.5f segundos.\n", ((double)(fim - inicio)) / CLOCKS_PER_SEC);
 }
 
-void mergeSort(int* vetor, int n) {
+void mergesort(int* vetor, int n) {
     double compara = 0;
     double troca = 0;
 
-    mergeSort_rec(vetor, 0, n - 1, &compara, &troca);
+    printf("Dados ordenados com Merge Sort:\n");
 
-    printf("Total de comparações: %f\n", compara);
-    printf("Total de trocas: %f\n", troca);
+    inicio = clock();
+    mergesort_rec(vetor, 0, n - 1, &compara, &troca);
+    fim = clock();
+
+
+    printf("Total de comparacoes: %.0f\n", compara);
+    printf("Total de trocas: %.0f\n", troca);
+    printf("Tempo de execucao: %3.5f segundos.\n", ((double)(fim - inicio)) / CLOCKS_PER_SEC);
 }

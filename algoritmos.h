@@ -19,3 +19,4 @@ void quicksortmediana(int n, int* vetor);
 
 void merge(int* vetor, int esquerda, int meio, int direita, double* compara, double* troca);
 void mergesort_rec(int* vetor, int esquerda, int direita, double* compara, double* troca);
+void mergesort(int* vetor, int n);
