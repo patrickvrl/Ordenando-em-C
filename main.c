@@ -51,10 +51,15 @@ void main(){
 
             memcpy(vetorcopia, vetor, n * sizeof(int));
             quicksortmediana(n, vetorcopia);
-            */
-
+            
             memcpy(vetorcopia, vetor, n * sizeof(int));
             mergesort(vetorcopia, n);
+            
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            heapsort(vetorcopia, n);
+            */
+            memcpy(vetorcopia, vetor, n * sizeof(int));
+            radixsort(vetorcopia, n);
 
             break;
 

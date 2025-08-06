@@ -437,3 +437,122 @@ void mergesort(int* vetor, int n) {
     printf("Total de trocas: %.0f\n", troca);
     printf("Tempo de execucao: %3.5f segundos.\n", ((double)(fim - inicio)) / CLOCKS_PER_SEC);
 }
+//HeapSort
+void heapsort(int* vetor, int n){
+    double compara = 0;
+    double troca = 0;
+    int i, aux;
+    inicio = clock();
+    for(i = (n-1)/2; i>=0; i--){ //Cria a heap(max) a partir dos dados
+        criaheap(vetor, i, n-1, &compara, &troca);
+    }
+    for(i=n-1; i>=1; i--){       //Reconstruir a heap
+        aux = vetor[0];         
+        vetor[0] = vetor[i];    
+        vetor[i] = aux;         
+        criaheap(vetor, 0, i-1, &compara, &troca);
+    }
+    fim = clock();
+
+    // for(int i = 0; i < n; i++){
+        //     printf("%d\n", vetor[i]);
+        // }
+        
+        printf("Numero de comparacoes: %.0f\n", compara);
+        printf("Numero de trocas: %.0f\n", troca);
+        printf("Tempo de execucao: %3.5f segundos.\n", ((double) (fim - inicio)) / CLOCKS_PER_SEC);
+    }
+
+    void criaheap(int* vetor, int in, int fin, double* compara, double* troca){
+        int aux = vetor[in];
+        int j = in * 2 + 1;
+        while(j <= fin){
+            if(j < fin){                   //Pai tem 2 filos?
+                if(vetor[j] < vetor[j+1]){ //Qual eh maior?
+                    j = j+1;               //    
+            }
+        }
+        
+        if(aux < vetor[j]){       //Filho eh maior que o pai?
+            (*compara)++;
+            vetor[in] = vetor[j]; //Filho se torna pai!
+            (*troca)++;
+            in = j;               // Repetir processo
+            j = 2 * in + 1;       //
+        }
+        else{
+            (*troca)++;
+            j = fin + 1; //Antigo pai ocupa lugar do ultimo filho analisado
+        }
+    }
+    vetor[in] = aux;
+    
+}
+
+int radixmaior(int* vetor, int n, double* compara) {
+    int maior = vetor[0];
+    for (int i = 1; i < n; i++) {
+        if (vetor[i] > maior) {
+            (*compara)++;
+            maior = vetor[i];
+        }
+    }
+    return maior;
+}
+
+void radixconta(int* vetor, int n, int expoente, double* compara, double* troca) {
+    int* saida = (int*)malloc(n * sizeof(int)); 
+    int conta[10] = {0}; 
+    
+    
+    for (int i = 0; i < n; i++) {
+        int digito = (vetor[i] / expoente) % 10;
+        conta[digito]++;
+        (*compara)++;
+    }
+    
+    
+    for (int i = 1; i < 10; i++) {
+        conta[i] += conta[i - 1];
+        (*compara)++;
+    }
+    
+    
+    for (int i = n - 1; i >= 0; i--) {
+        int digito = (vetor[i] / expoente) % 10;
+        saida[conta[digito] - 1] = vetor[i];
+        conta[digito]--;
+        (*troca)++;
+        (*compara)++;
+    }
+    
+    for (int i = 0; i < n; i++) {
+        vetor[i] = saida[i];
+        (*troca)++;
+    }
+    
+    free(saida);
+}
+
+void radixsort(int* vetor, int n) {
+    double compara = 0;
+    double troca = 0;
+    
+    int maior = radixmaior(vetor, n, &compara);
+    
+    inicio = clock();
+    for (int expoente = 1; maior / expoente > 0; expoente *= 10) {
+        compara++;
+        radixconta(vetor, n, expoente, &compara, &troca);
+    }
+    fim = clock();
+
+    // for(int i = 0; i < n; i++){
+    //     printf("%d\n", vetor[i]);
+    // }
+    
+    
+    printf("Numero de comparacoes: %.0f\n", compara);
+    printf("Numero de trocas: %.0f\n", troca);
+    printf("Tempo de execucao: %3.5f segundos.\n", ((double) (fim - inicio)) / CLOCKS_PER_SEC);
+}
