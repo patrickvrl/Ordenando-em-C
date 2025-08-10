@@ -17,20 +17,20 @@ int* geraraleatorio(int n, int* vetor){
 }
 
 int* gerarcrescente(int n, int* vetor){
-    printf("%d numeros em ordem crescente:\n", n);
-    for(int i = 0; i < n; i++){
-        vetor[i] = i;
-        printf("%d\n", vetor[i]);
+    //printf("%d numeros em ordem crescente:\n", n);
+    for(int i = 0; i <= n; i++){
+        vetor[i] = (i + 1) * 10;
+        // printf("%d\n", vetor[i]);
     }
     return vetor;
 }
 
 int* gerardecrescente(int n, int* vetor){
-    printf("%d numeros em ordem descrescente:\n", n);
+    //printf("%d numeros em ordem descrescente:\n", n);
     
-    for(int i = n; i > 0; i--){
-        vetor[i] = i;
-        printf("%d\n", vetor[i]);
+    for(int i = 0; i < n; i++){
+        vetor[i] = (n - i) * 100;
+        //printf("%d\n", vetor[i]);
     }
     return vetor;
 }
