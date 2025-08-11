@@ -12,8 +12,11 @@ void selectionsort(int n, int* vetor);
 
 void quicksort_rec_centro(int* vetor, int esquerda, int direita, double* compara, double* troca);
 void quicksortcentro(int n, int* vetor);
+
 void quicksort_rec_fim(int* vetor, int esquerda, int direita, double* compara, double* troca);
 void quicksortfim(int n, int* vetor);
+int particiona_lomuto(int* vetor, int esquerda, int direita, double* compara, double* troca);
+
 void quicksort_rec_mediana(int* vetor, int esquerda, int direita, double* compara, double* troca);
 void quicksortmediana(int n, int* vetor);
 

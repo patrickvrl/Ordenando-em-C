@@ -266,33 +266,35 @@ void quicksortcentro(int n, int* vetor){
     printf("Tempo de execucao: %3.5f segundos.\n\n", ((double)(fim - inicio)) / CLOCKS_PER_SEC);
 }
 
+int particiona_lomuto(int* vetor, int esquerda, int direita, double* compara, double* troca){
+    int pivo = vetor[direita];
+    int i = esquerda - 1;
+
+    for (int j = esquerda; j < direita; j++) {
+        (*compara)++;  
+        if (vetor[j] <= pivo) {  
+            i++;
+            int aux = vetor[i];
+            vetor[i] = vetor[j];
+            vetor[j] = aux;
+            (*troca)++;
+        }
+    }
+
+    
+    int aux = vetor[i + 1];
+    vetor[i + 1] = vetor[direita];
+    vetor[direita] = aux;
+    (*troca)++;
+
+    return i + 1;
+}
+
 void quicksort_rec_fim(int* vetor, int esquerda, int direita, double* compara, double* troca){
     if (esquerda < direita){
-        int pivo = vetor[direita];
-        int i = esquerda;
-        int j = direita;
-
-        while (i <= j){
-            while (vetor[i] < pivo){
-                i++;
-                (*compara)++;
-            }
-            while (vetor[j] > pivo){
-                j--;
-                (*compara)++;
-            }
-            if (i <= j){
-                int aux = vetor[i];
-                vetor[i] = vetor[j];
-                vetor[j] = aux;
-                (*troca)++;
-                i++;
-                j--;
-            }
-        }
-
-        quicksort_rec_fim(vetor, esquerda, j, compara, troca);
-        quicksort_rec_fim(vetor, i, direita, compara, troca);
+        int p = particiona_lomuto(vetor, esquerda, direita, compara, troca);
+        quicksort_rec_fim(vetor, esquerda, p - 1, compara, troca);
+        quicksort_rec_fim(vetor, p + 1, direita, compara, troca);
     }
 }
 

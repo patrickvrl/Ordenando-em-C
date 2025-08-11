@@ -29,7 +29,7 @@ int* gerardecrescente(int n, int* vetor){
     //printf("%d numeros em ordem descrescente:\n", n);
     
     for(int i = 0; i < n; i++){
-        vetor[i] = (n - i) * 100;
+        vetor[i] = (n - i) * 10;
         //printf("%d\n", vetor[i]);
     }
     return vetor;
